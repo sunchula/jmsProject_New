@@ -30,13 +30,13 @@ public class MessagePriority {
 			messages[1] = "Message Two";
 			messages[2] = "Message Three";
 
-			producer.setPriority(3);
+			//producer.setPriority(3);
 			producer.send(queue, messages[0]);
 
-			producer.setPriority(1);
+			//producer.setPriority(1);
 			producer.send(queue, messages[1]);
 
-			producer.setPriority(9);
+			//producer.setPriority(9);
 			producer.send(queue, messages[2]);
 
 			JMSConsumer consumer = jmsContext.createConsumer(queue);
