@@ -2,6 +2,7 @@ package com.praveem.jms.versionTwoX;
 
 import javax.jms.JMSContext;
 import javax.jms.Queue;
+import javax.jms.TextMessage;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -17,7 +18,10 @@ public class JMSContextDemo {
 		try(ActiveMQConnectionFactory cf = new ActiveMQConnectionFactory();
 				JMSContext jmsContext = cf.createContext()) {
 			
-			jmsContext.createProducer().send(queue,"Hi From Producer");
+			String messageSent = "Hi From Producer";
+			jmsContext.createProducer().send(queue,messageSent);
+			System.out.println("Message Sent - "+messageSent);
+			
 			
 			String messageReceived = jmsContext.createConsumer(queue).receiveBody(String.class);
 			System.out.println("Message Received - "+messageReceived);
